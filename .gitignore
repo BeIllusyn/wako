@@ -1,2 +1,5 @@
 # Built binary
 /wako
+
+# GoReleaser output
+/dist/

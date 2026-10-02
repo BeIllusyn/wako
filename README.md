@@ -31,18 +31,39 @@ wako: "web" running as "web": pnpm dev (in /Users/you/code/web)
 
 ## Install
 
+### Install script (macOS and Linux)
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/liuenzuo666/wako/master/install.sh | sh
+```
+
+The script downloads the latest release, verifies its checksum and installs
+the binary to `~/.local/bin`. Pick a specific version or another directory
+with:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/liuenzuo666/wako/master/install.sh | WAKO_VERSION=v1.0.0 WAKO_INSTALL=/usr/local/bin sh
+```
+
+### Download a release
+
+Prebuilt binaries for macOS, Linux and Windows are on the
+[releases page](https://github.com/liuenzuo666/wako/releases).
+
+### With Go
+
 Requires [Go](https://go.dev) 1.26 or later.
+
+```sh
+go install github.com/liuenzuo666/wako@latest
+```
+
+Make sure `$(go env GOPATH)/bin` is in your `PATH`. Alternatively, clone and
+build a binary wherever you like:
 
 ```sh
 git clone https://github.com/liuenzuo666/wako.git
 cd wako
-go install .
-```
-
-Make sure `$(go env GOPATH)/bin` is in your `PATH`. Alternatively, build a
-binary wherever you like:
-
-```sh
 go build -o wako .
 ```
 
@@ -125,6 +146,7 @@ wako list -a   # also show commands and directories
 | `wako resume <run name>` | Attach to a running service (`Ctrl+C` detaches) |
 | `wako ps` | List running services (`runs`) |
 | `wako list [-a]` | List services; `-a` also shows commands and directories (`ls`) |
+| `wako version` | Show the wako version |
 | `wako help` | Show help |
 
 ## How it works

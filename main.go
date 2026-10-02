@@ -63,6 +63,8 @@ func run(args []string) error {
 		return cmdPs(rest)
 	case "list", "ls":
 		return cmdList(rest)
+	case "version", "--version":
+		return cmdVersion(rest)
 	case "__supervise":
 		return cmdSupervise(rest)
 	case "help", "-h", "--help":
@@ -85,6 +87,7 @@ Usage:
   wako resume <run name>                  Attach to a running service (Ctrl+C detaches)
   wako ps                                 List running services
   wako list [-a]                          List services; -a also shows commands and directories
+  wako version                            Show the wako version
   wako help                               Show this help
 
 Starting services:

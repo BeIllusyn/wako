@@ -26,17 +26,35 @@ wako: "web" running as "web": pnpm dev (in /Users/you/code/web)
 
 ## 安装
 
+### 安装脚本（macOS 和 Linux）
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/liuenzuo666/wako/master/install.sh | sh
+```
+
+脚本会下载最新版本、校验校验和，并把二进制安装到 `~/.local/bin`。也可以指定版本或安装目录：
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/liuenzuo666/wako/master/install.sh | WAKO_VERSION=v1.0.0 WAKO_INSTALL=/usr/local/bin sh
+```
+
+### 下载发行版
+
+macOS、Linux 和 Windows 的预编译二进制文件见 [releases 页面](https://github.com/liuenzuo666/wako/releases)。
+
+### 使用 Go 安装
+
 需要 [Go](https://go.dev) 1.26 或更高版本。
+
+```sh
+go install github.com/liuenzuo666/wako@latest
+```
+
+确保 `$(go env GOPATH)/bin` 在你的 `PATH` 中。或者，克隆后把二进制构建到任意位置：
 
 ```sh
 git clone https://github.com/liuenzuo666/wako.git
 cd wako
-go install .
-```
-
-确保 `$(go env GOPATH)/bin` 在你的 `PATH` 中。或者，直接把二进制构建到任意位置：
-
-```sh
 go build -o wako .
 ```
 
@@ -115,6 +133,7 @@ wako list -a   # 同时显示命令和目录
 | `wako resume <run name>` | 接管正在运行的服务（`Ctrl+C` 分离） |
 | `wako ps` | 列出正在运行的服务（别名 `runs`） |
 | `wako list [-a]` | 列出服务；`-a` 同时显示命令和目录（别名 `ls`） |
+| `wako version` | 显示 wako 版本 |
 | `wako help` | 显示帮助 |
 
 ## 工作原理
